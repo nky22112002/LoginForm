@@ -20,7 +20,7 @@ require 'header.php';
                 <!-- <h6 class="display-4 caption-end">We are currently <strong><?php echo countUsers()?> users</strong> and <strong><?php echo countPosts()?> posts</strong> strong!</h6> -->
             </div>
             
-            <a href="chat.php">
+            <a href="admin.php">
             <button class="btn btn-outline-warning menu-button"><h4 class="display-4 btn-menu-text">
                 Manager
             </h4></button>
