@@ -21,9 +21,9 @@ require 'header.php';
             </div>
             
             <a href="chat.php">
-            <!-- <button class="btn btn-outline-warning menu-button"><h4 class="display-4 btn-menu-text">
-                Start Now
-            </h4></button> -->
+            <button class="btn btn-outline-warning menu-button"><h4 class="display-4 btn-menu-text">
+                Manager
+            </h4></button>
             </a>
         </div>
         

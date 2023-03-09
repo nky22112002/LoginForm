@@ -13,6 +13,7 @@
 		$username = $_POST['username'];
 		$password = $_POST['pwd'];
 		$repassword = $_POST['confirmpwd'];
+		$status = $_POST['ad'];
 
 		$secretKey	= "6LfoIZYUAAAAANnkiYlM5Lc_yU7NLdUTd9rZFyD9";
 		$responseKey= $_POST['g-recaptcha-response'];
@@ -80,7 +81,7 @@
 					header("Location: register.php?error=usernameTaken&uid=".$username."&email=".$email);
 					exit();
 				} else {
-					$sql = "INSERT INTO user (email, username, password) VALUES (?, ?, ?)";
+					$sql = "INSERT INTO user (email, username, password, status) VALUES (?, ?, ?, ?)";
 					$stmt= mysqli_stmt_init($link);
 					if(!mysqli_stmt_prepare($stmt, $sql)) {
 						header("Location: register.php?error=sqlerror2");
@@ -97,7 +98,7 @@
 						/************************
 						 * INSERT into Database *
 						 ************************/
-						mysqli_stmt_bind_param($stmt, "sss", $email, $username, $hashedPwd);
+						mysqli_stmt_bind_param($stmt, "ssss", $email, $username, $hashedPwd, $status);
 						mysqli_stmt_execute($stmt);
 						header("Location: register.php?register=success");
 						exit();

@@ -87,6 +87,14 @@
               <input type="password" class="form-control" name="confirmpwd" id="confirmpwd" placeholder="Confirm Password">
             </div>
 
+            <div>
+            <select id="ad" name="ad" placeholder="Admin">
+              <option value="1">user</option>
+              <option value="2">admin</option>
+              <option value="3">superadmin</option>
+            </select>
+            </div>
+
             <div class="g-recaptcha" data-sitekey="6LfoIZYUAAAAAC2_5OE2KD45MdjAjD48Z4OrkI-k"></div>
 
             <button type="submit" class="btn btn-primary" id="submit" name="register-submit">Register</button>
