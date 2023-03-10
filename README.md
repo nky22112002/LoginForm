@@ -9,4 +9,4 @@ Set Up Guide:
 5. Import brinets.sql
 6. Extract archive to C:\xampp\htdocs\ or clone link git hub git@github.com:nky22112002/LoginForm.git into C:\xampp\htdocs\
 7. Open Browser, go to "localhost/LoginForm/login.php"
-
+ 
