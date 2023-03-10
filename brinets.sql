@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2019 at 04:21 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Mar 10, 2023 at 09:29 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,34 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_table`
---
-
-CREATE TABLE `post_table` (
-  `id` int(3) NOT NULL,
-  `uid` varchar(10) NOT NULL,
-  `post_title` varchar(50) NOT NULL,
-  `post_content` text NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `post_table`
---
-
-INSERT INTO `post_table` (`id`, `uid`, `post_title`, `post_content`, `datetime`) VALUES
-(10, 'Google', 'Google Google', 'This is the header of the post.', '2019-03-16 15:59:43'),
-(11, 'Google', 'Is my Post number added?', 'isitawdapwkd', '2019-03-16 16:09:24'),
-(12, 'Google', 'asdasdsad', 'asdasdas das das dassdad', '2019-03-16 16:11:20'),
-(13, 'OldUser', 'Old User is Back', 'what has been going on lately?', '2019-03-16 16:35:00'),
-(14, 'OldUser', 'OldUser\'s Second Post', 'num of post should be 23 now', '2019-03-17 01:18:12'),
-(15, 'betabeta', 'I\'m new here...', 'Hey guys, I\'m stopping by to say hi. I hope we all get along together :D', '2019-03-17 01:55:36'),
-(16, 'Google', 'Hello, betabeta!', 'As one of the most esteem member of this forum, I welcome you here. Enjoy your stay. I know it\'s nothing much, but I hope this can help you connect with other people around the globe.', '2019-03-17 02:22:20'),
-(17, 'MrBong', 'Hello world.', 'Siapa yang suruh wilbert beli kue?', '2019-03-18 13:33:28');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -61,32 +32,31 @@ CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `num_of_posts` int(11) NOT NULL DEFAULT '0',
-  `date_joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `num_of_posts` int(11) NOT NULL DEFAULT 0,
+  `date_joined` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `num_of_posts`, `date_joined`) VALUES
-(22, 'google@gmail.com', 'Google', '$2y$10$tueoIO2nLyYlcrFwRZSOWu/VdE9AA.6mOOEI05AVn5Xh.hD0QbLH2', 4, '2019-03-16 15:59:07'),
-(24, 'Old@user.com', 'OldUser', '$2y$10$OHAunR0MjV2tp4cToEWnQuSkkvx/KTo/PhBLgeC8wRWHfQXoL59.a', 2, '2017-01-01 16:33:53'),
-(25, 'beta@beta.beta', 'betabeta', '$2y$10$h1bnVn7s3TMme19JRvxWGep/MVaUzHAH8jxCLgj08BFt8P.Sdv15e', 1, '2019-03-17 01:54:09'),
-(26, 'email@gmai.com', 'TonyStark', '$2y$10$iR3abChorjCykqEiBKAUs.eRbeIEjCu81vu6nGLDl80HJhm4Jfthe', 0, '2019-03-17 16:08:55'),
-(27, 'bongcenchoi@gmail.com', 'MrBong', '$2y$10$JFlDju4t8rxBKtI1WrisrOWKdlvpL7Ra/Y4OxzoUyLdC8r.RrxRoO', 1, '2019-03-18 13:30:56'),
-(28, 'GabrielDejan@gmail.com', 'Garziel', '$2y$10$KcYtmij7rWdmTEJTpHlAjeTllTZykRVFSFRnzWfHX7jAm805JL7lu', 0, '2019-03-18 13:31:23'),
-(29, 'admin@admin.admin', 'admin', '$2y$10$mQG8kASub/lpTmmYLjiF6OH6UszMZCHDdQgJhKMA1v/K4Q8v7tL1.', 0, '2019-03-29 22:30:54');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `num_of_posts`, `date_joined`, `status`) VALUES
+(22, 'google@gmail.com', 'Google', '$2y$10$tueoIO2nLyYlcrFwRZSOWu/VdE9AA.6mOOEI05AVn5Xh.hD0QbLH2', 4, '2019-03-16 15:59:07', '1'),
+(24, 'Old@user.com', 'OldUser', '$2y$10$OHAunR0MjV2tp4cToEWnQuSkkvx/KTo/PhBLgeC8wRWHfQXoL59.a', 2, '2017-01-01 16:33:53', '1'),
+(25, 'beta@beta.beta', 'betabeta', '$2y$10$h1bnVn7s3TMme19JRvxWGep/MVaUzHAH8jxCLgj08BFt8P.Sdv15e', 1, '2019-03-17 01:54:09', '1'),
+(26, 'email@gmai.com', 'TonyStark', '$2y$10$iR3abChorjCykqEiBKAUs.eRbeIEjCu81vu6nGLDl80HJhm4Jfthe', 0, '2019-03-17 16:08:55', '1'),
+(27, 'bongcenchoi@gmail.com', 'MrBong', '$2y$10$JFlDju4t8rxBKtI1WrisrOWKdlvpL7Ra/Y4OxzoUyLdC8r.RrxRoO', 1, '2019-03-18 13:30:56', '1'),
+(28, 'GabrielDejan@gmail.com', 'Garziel', '$2y$10$KcYtmij7rWdmTEJTpHlAjeTllTZykRVFSFRnzWfHX7jAm805JL7lu', 0, '2019-03-18 13:31:23', '1'),
+(30, 'nky22112002@gmail.com', 'ky123', '$2y$10$ADesfkxoceT5IVWrzcgOCOIzi2f.cqjOkdZCJemKNxMhx1I7n1RhG', 0, '2023-03-08 23:49:13', '1'),
+(31, 'nky123@gmail.com', 'abcde', '$2y$10$YF0bGn8cKZhzp08jVM2Kz.6Y9IemNzoXfI6QZKfx8Pwc5O2I/oWu2', 0, '2023-03-09 00:11:14', '1'),
+(32, 'nky123@gmail.com', 'abcdef', '$2y$10$D2CoajjqwOIQuRI9NMRIzuUV3fws4VnDBevjiN2WxQ9poQnrl8t8K', 0, '2023-03-09 09:53:12', '1'),
+(33, 'nky22112002@gmail.com', 'abcdefg', '$2y$10$URcU6rRdz3Ss2ebcBC5U/OCwvCNmvzwIxJh68T7Nq79c9sG0sWlVK', 0, '2023-03-10 09:27:56', '2'),
+(34, 'dienlk456@gmail.com', 'qwert', '$2y$10$WF1lG6WPbJvyC2i9EYDKceuVPUhpG/cH49kDjZZ05CjCECG2.CpSK', 0, '2023-03-10 10:33:48', '3');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `post_table`
---
-ALTER TABLE `post_table`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -99,16 +69,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `post_table`
---
-ALTER TABLE `post_table`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
