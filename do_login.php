@@ -10,7 +10,6 @@
 
 		$username 	= $_POST['username'];
 		$password 	= $_POST['pwd'];
-		
 		//Variables for Google ReCaptcha
 		$secretKey	= "6LfoIZYUAAAAANnkiYlM5Lc_yU7NLdUTd9rZFyD9";
 		$responseKey= $_POST['g-recaptcha-response'];
