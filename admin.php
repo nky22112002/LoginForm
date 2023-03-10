@@ -9,8 +9,9 @@ require 'header.php';
     $sql1 = "SELECT status FROM user WHERE username='$username'" ;
     $result1 = $mysqli->query($sql1);
 
-    $row1 = $result->fetch_assoc();
+    $row1 = $result1->fetch_assoc();
     $status = $row1['status'];
+    echo $status;
     echo "<ul>";
     while ($row = $result->fetch_assoc()) {
         echo "<li>" . $row["username"] . "</li>";
