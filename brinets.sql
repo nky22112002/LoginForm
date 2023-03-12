@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 09:29 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Mar 31, 2019 at 04:21 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,6 +25,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `post_table`
+--
+
+CREATE TABLE `post_table` (
+  `id` int(3) NOT NULL,
+  `uid` varchar(10) NOT NULL,
+  `post_title` varchar(50) NOT NULL,
+  `post_content` text NOT NULL,
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `post_table`
+--
+
+INSERT INTO `post_table` (`id`, `uid`, `post_title`, `post_content`, `datetime`) VALUES
+(10, 'Google', 'Google Google', 'This is the header of the post.', '2019-03-16 15:59:43'),
+(11, 'Google', 'Is my Post number added?', 'isitawdapwkd', '2019-03-16 16:09:24'),
+(12, 'Google', 'asdasdsad', 'asdasdas das das dassdad', '2019-03-16 16:11:20'),
+(13, 'OldUser', 'Old User is Back', 'what has been going on lately?', '2019-03-16 16:35:00'),
+(14, 'OldUser', 'OldUser\'s Second Post', 'num of post should be 23 now', '2019-03-17 01:18:12'),
+(15, 'betabeta', 'I\'m new here...', 'Hey guys, I\'m stopping by to say hi. I hope we all get along together :D', '2019-03-17 01:55:36'),
+(16, 'Google', 'Hello, betabeta!', 'As one of the most esteem member of this forum, I welcome you here. Enjoy your stay. I know it\'s nothing much, but I hope this can help you connect with other people around the globe.', '2019-03-17 02:22:20'),
+(17, 'MrBong', 'Hello world.', 'Siapa yang suruh wilbert beli kue?', '2019-03-18 13:33:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -32,10 +61,9 @@ CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `num_of_posts` int(11) NOT NULL DEFAULT 0,
-  `date_joined` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `num_of_posts` int(11) NOT NULL DEFAULT '0',
+  `date_joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -59,6 +87,12 @@ INSERT INTO `user` (`id`, `email`, `username`, `password`, `num_of_posts`, `date
 --
 
 --
+-- Indexes for table `post_table`
+--
+ALTER TABLE `post_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -69,10 +103,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `post_table`
+--
+ALTER TABLE `post_table`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
