@@ -91,7 +91,6 @@
             <select id="ad" name="ad" placeholder="Admin">
               <option value="1">user</option>
               <option value="2">admin</option>
-              <option value="3">superadmin</option>
             </select>
             </div>
 
