@@ -62,7 +62,8 @@ CREATE TABLE `user` (
   `username` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
   `num_of_posts` int(11) NOT NULL DEFAULT '0',
-  `date_joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
